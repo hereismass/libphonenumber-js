@@ -64,6 +64,15 @@ describe('findPhoneNumbers', () =>
 			startsAt : 37,
 			endsAt   : 64
 		}])
+
+		// A phone number and and not a phone number in a long word.
+		findNumbers('+7 (800) 555-35-35 is a number, but not CA801c26f98cd16e2133734253ad046e40b', 'US', metadata).should.deep.equal
+		([{
+			phone    : '8005553535',
+			country  : 'RU',
+			startsAt : 0,
+			endsAt   : 18
+		}])
 	})
 
 	it('should iterate', function()
